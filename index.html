@@ -23,7 +23,17 @@
       color: #0077ff;
       margin-bottom: 10px;
     }
+    h2 {
+      font-size: 2em;
+      color: #ff0000;
+      margin-bottom: 10px;
+    }
     #resultado {
+      font-size: 3em;
+      font-weight: bold;
+      letter-spacing: 5px;
+    }
+    #resultado2 {
       font-size: 3em;
       font-weight: bold;
       letter-spacing: 5px;
@@ -36,16 +46,23 @@
   </center>
   <h1>Senha do Dia</h1>
   <div id="resultado">--</div>
+  <h2>Senha CNPJ</h2>
+  <div id="resultado2">--</div>
 
   <script>
     function atualizarSenha() {
       const hoje = new Date();
       const dia = hoje.getDate();
       const mes = hoje.getMonth() + 1;
+      const ano = hoje.getFullYear().toString().slice(-2);
       const parte1 = dia * mes;
       const parte2 = dia * 8;
+      const parte3 = dia * ano;
+      const parte4 = mes * ano;
       const senha = `${parte1}${parte2}`;
+      const senha2 = `${parte1}${parte3}${parte4}`;
       document.getElementById('resultado').textContent = senha;
+      document.getElementById('resultado2').textContent = senha2;
     }
 
     atualizarSenha();
